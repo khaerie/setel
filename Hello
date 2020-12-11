@@ -1,0 +1,83 @@
+package test;
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    // create a scanner so we can read the command-line input
+        Scanner scanner = new Scanner(System.in);
+    
+		System.out.println("Hello World");
+		// get their input as a String
+        String username = scanner.next();
+
+        StringModifier obj = new StringModifier();
+        obj.setValue(username);
+
+        System.out.println("native method: " + obj.addSomething());
+        System.out.println("polymorphed method: " + obj.addSomething(username));
+
+        String str1="Hello World";  
+        StringBuffer newStr=new StringBuffer(str1);  
+            for(int i = 0; i < str1.length(); i++) {  
+              
+            //Checks for lower case character  
+            if(Character.isLowerCase(str1.charAt(i))) {  
+                //Convert it into upper case using toUpperCase() function  
+                newStr.setCharAt(i, Character.toUpperCase(str1.charAt(i)));  
+            }  
+            //Checks for upper case character  
+            else if(Character.isUpperCase(str1.charAt(i))) {  
+                //Convert it into upper case using toLowerCase() function  
+                newStr.setCharAt(i, Character.toLowerCase(str1.charAt(i)));  
+            }  
+        }  
+        System.out.println("String after case conversion : " + newStr); 
+        //input String which contains words in lowercase
+        String strInLowerCase = "this string is in lowercase";
+     
+        System.out.println("String before converting to Uppercase");
+        System.out.println("input : " + strInLowerCase);
+     
+        // converting lowercase String to uppercase in Java
+        String strInUpperCase = strInLowerCase.toUpperCase(); //toUpperCase return lowercase of String
+     
+        System.out.println("String after converting to Uppercase");
+        System.out.println("output : " + strInLowerCase);
+   
+        String upper = "THIS IS UPPER CASE STRING";
+     
+        String lower = upper.toLowerCase(); //toLowerCase() return lowercase of String
+     
+        System.out.println("input String before converting to LowerCase : " + upper);
+        System.out.println("output String after converting to LowerCase : " + lower);
+    }    
+}  
+
+class UpperCaseMaker{
+    
+    private String value;
+    
+    public void setValue(String param) {
+        this.value = param;
+    }
+    
+    public String getValue() {
+        return this.value;
+    }
+    
+    public String makeUpperCase() {
+        String produce = this.value;
+        return produce.toUpperCase();
+    }
+}   
+
+class StringModifier extends UpperCaseMaker{
+    
+    public String addSomething() {
+        return makeUpperCase() + " - setel";
+    }    
+    
+    public String addSomething(String result) {
+        return makeUpperCase() + " - " + result;
+    }
+}
